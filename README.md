@@ -1,2 +1,2 @@
 # Bitwise-Manipulation-Game
-Using the shortest number of manipulations convert 1 byte to another
+Using the shortest number of manipulations convert 1 byte to another - made using Python3
