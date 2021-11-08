@@ -32,3 +32,7 @@ def bin_to_den(binary):
 def logical_shift_mul(denary ,shift_num):
     binary = bin(int(denary) << shift_num)
     return binary[2:]
+
+def logical_shift_div(denary ,shift_num):
+    binary = bin(int(denary) >> shift_num)
+    return binary[2:]
