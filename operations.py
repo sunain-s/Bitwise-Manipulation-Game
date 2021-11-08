@@ -14,3 +14,17 @@
 # OR - used to turn on bits: input(10011010) + mask(11100110) = output(1111110)
 
 # --------------------------------------------------------------------------------------------------
+
+def bin_to_den(binary):
+    '''
+    Converts binary strings to denary via addition method
+    '''
+
+    binary = binary[::-1]
+    denary = 0
+    power = 0
+    for bit in binary:
+        if bit == '1':
+            denary += 2**power # addition method of converting
+        power += 1 # uses place values
+    return denary
