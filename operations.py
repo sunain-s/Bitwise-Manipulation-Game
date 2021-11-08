@@ -28,3 +28,7 @@ def bin_to_den(binary):
             denary += 2**power # addition method of converting
         power += 1 # uses place values
     return denary
+
+def logical_shift_mul(denary ,shift_num):
+    binary = bin(int(denary) << shift_num)
+    return binary[2:]
