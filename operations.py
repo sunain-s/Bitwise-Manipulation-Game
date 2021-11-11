@@ -14,25 +14,30 @@
 # OR - used to turn on bits: input(10011010) + mask(11100110) = output(1111110)
 
 # --------------------------------------------------------------------------------------------------
+# Utility Functions
 
-def bin_to_den(binary):
+def zero_packing(binary, length):
     '''
-    Converts binary strings to denary via addition method
+    Packs binary string with zeros until a given length
+        e.g. zero_packing('11001', 8)
+    returns '00011001' which is in byte form
     '''
 
-    binary = binary[::-1]
-    denary = 0
-    power = 0
-    for bit in binary:
-        if bit == '1':
-            denary += 2**power # addition method of converting
-        power += 1 # uses place values
-    return denary
+    binary = binary[::-1] # reverses binary strinf so it can be more easily packed with leading zeros
+    if len(binary) % length:
+        zeros = length - len(binary)
+        binary += '0' * zeros  # packs necessary amount of leading zeros into string
+    return binary[::-1] # returns binary
 
-def logical_shift_mul(denary ,shift_num):
-    binary = bin(int(denary) << shift_num)
-    return binary[2:]
+# --------------------------------------------------------------------------------------------------
+# Shifting
 
-def logical_shift_div(denary ,shift_num):
-    binary = bin(int(denary) >> shift_num)
-    return binary[2:]
+def logical_shift_mul(binary ,shift_num):
+    binary = bin(int(binary, 2) << shift_num)
+    binary = zero_packing(binary[2:], 8)
+    return binary[abs(len(binary) - 8):]
+
+def logical_shift_div(binary ,shift_num):
+    binary = bin(int(binary, 2) >> shift_num)
+    binary = zero_packing(binary[2:], 8)
+    return binary[abs(len(binary) - 8):]
