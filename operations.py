@@ -50,3 +50,11 @@ def arithmetic_shift_mul(binary, shift_num):
     binary = sign + binary[1:]
     return binary
 
+def arithmetic_shift_div(binary, shift_num):
+    sign = binary[0]
+    binary = bin(int(binary, 2) >> shift_num)
+    binary = zero_packing(binary[2:], 8)
+    binary = binary[abs(len(binary) - 8):]
+    binary = sign + binary[1:]
+    return binary 
+    
