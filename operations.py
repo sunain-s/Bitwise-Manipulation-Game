@@ -71,3 +71,13 @@ def and_mask(binary, mask):
         else:
             masked_binary += '0'
     return masked_binary
+
+def or_mask(binary, mask):
+    mask = zero_packing(mask, 8)
+    masked_binary = ''
+    for bit in range(len(binary)):
+        if binary[bit] == '1' or mask[bit] == '1':
+            masked_binary += '1'
+        else:
+            masked_binary += '0'
+    return masked_binary
