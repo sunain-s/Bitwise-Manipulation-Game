@@ -58,3 +58,16 @@ def arithmetic_shift_div(binary, shift_num):
     binary = sign + binary[1:]
     return binary 
     
+def byte_to_denary(binary):
+    denary = int(binary, 2)
+    return str(denary)
+
+def and_mask(binary, mask):
+    mask = zero_packing(mask, 8)
+    masked_binary = ''
+    for bit in range(len(binary)):
+        if binary[bit] == '1' and mask[bit] == '1':
+            masked_binary += '1'
+        else:
+            masked_binary += '0'
+    return masked_binary
