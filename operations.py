@@ -89,3 +89,9 @@ def or_mask(binary, mask):
         else:
             masked_binary += '0'
     return masked_binary
+
+def binary_generator():
+    byte = ''
+    for bit in range(1, 9):
+        byte += str(randint(0, 1))
+    return byte
