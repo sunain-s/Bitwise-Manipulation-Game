@@ -1,6 +1,12 @@
 # Shifts and Mask operations
 
 # --------------------------------------------------------------------------------------------------
+# Imports
+
+import random
+from random import randint
+
+# --------------------------------------------------------------------------------------------------
 # Logical Shifts
 # 2**x, x>0: shifts <==  multiplying
 # 2**x, x<0: shifts ==> dividing
