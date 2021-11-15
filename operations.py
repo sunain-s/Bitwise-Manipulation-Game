@@ -121,3 +121,18 @@ def binary_generator():
     for bit in range(1, 9):
         byte += str(randint(0, 1))
     return byte
+
+def solve_in_one(target_binary, start_binary):
+    solve_code = 0
+    if logical_shift_mul(start_binary, 1) == target_binary:
+        solve_code = 1
+
+    if logical_shift_div(start_binary, 1) == target_binary:
+        solve_code = 2
+
+    if arithmetic_shift_mul(start_binary, 1) == target_binary:
+        solve_code = 3
+    
+    if arithmetic_shift_div(start_binary, 1) == target_binary:
+        solve_code = 4
+    return solve_code
