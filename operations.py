@@ -29,7 +29,7 @@ def zero_packing(binary, length):
     returns '00011001' which is in byte form
     '''
 
-    binary = binary[::-1] # reverses binary strinf so it can be more easily packed with leading zeros
+    binary = binary[::-1] # reverses binary string so it can be more easily packed with leading zeros
     if len(binary) % length:
         zeros = length - len(binary)
         binary += '0' * zeros  # packs necessary amount of leading zeros into string
@@ -59,16 +59,19 @@ def packing_check(binary):
 # Shifting
 
 def logical_shift_mul(binary ,shift_num):
+    binary = packing_check(binary)
     binary = bin(int(binary, 2) << shift_num)
     binary = zero_packing(binary[2:], 8)
     return binary[abs(len(binary) - 8):]
 
 def logical_shift_div(binary ,shift_num):
+    binary = packing_check(binary)
     binary = bin(int(binary, 2) >> shift_num)
     binary = zero_packing(binary[2:], 8)
     return binary[abs(len(binary) - 8):]
 
 def arithmetic_shift_mul(binary, shift_num):
+    binary = packing_check(binary)
     sign = binary[0]
     binary = bin(int(binary, 2) << shift_num)
     binary = zero_packing(binary[2:], 8)
@@ -77,6 +80,7 @@ def arithmetic_shift_mul(binary, shift_num):
     return binary
 
 def arithmetic_shift_div(binary, shift_num):
+    binary = packing_check(binary)
     sign = binary[0]
     binary = bin(int(binary, 2) >> shift_num)
     binary = zero_packing(binary[2:], 8)
@@ -97,6 +101,7 @@ def byte_to_denary(binary):
     return denary
 
 def and_mask(binary, mask):
+    binary = packing_check(binary)
     mask = zero_packing(mask, 8)
     masked_binary = ''
     for bit in range(len(binary)):
@@ -107,6 +112,7 @@ def and_mask(binary, mask):
     return masked_binary
 
 def or_mask(binary, mask):
+    binary = packing_check(binary)
     mask = zero_packing(mask, 8)
     masked_binary = ''
     for bit in range(len(binary)):
@@ -120,6 +126,7 @@ def binary_generator():
     byte = ''
     for bit in range(1, 9):
         byte += str(randint(0, 1))
+    print(byte)
     return byte
 
 def solve_in_one(target_binary, start_binary):
