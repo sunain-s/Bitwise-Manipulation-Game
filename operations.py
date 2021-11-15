@@ -48,6 +48,13 @@ def one_packing(binary, length):
         binary += '1' * ones  # packs necessary amount of leading ones into string
     return binary[::-1] # returns binary
 
+def packing_check(binary):
+    if binary[0] == '1':
+        binary = one_packing(binary, 8)
+    if binary[0] == '0':
+        binary = zero_packing(binary, 8)
+    return binary
+
 # --------------------------------------------------------------------------------------------------
 # Shifting
 
