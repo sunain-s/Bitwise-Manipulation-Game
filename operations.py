@@ -35,6 +35,19 @@ def zero_packing(binary, length):
         binary += '0' * zeros  # packs necessary amount of leading zeros into string
     return binary[::-1] # returns binary
 
+def one_packing(binary, length):
+    '''
+    Packs binary string with ones until a given length
+        e.g. one_packing('11001', 8)
+    returns '11111001' which is in byte form
+    '''
+
+    binary = binary[::-1] # reverses binary string so it can be more easily packed with leading ones
+    if len(binary) % length:
+        ones = length - len(binary)
+        binary += '1' * ones  # packs necessary amount of leading ones into string
+    return binary[::-1] # returns binary
+
 # --------------------------------------------------------------------------------------------------
 # Shifting
 
