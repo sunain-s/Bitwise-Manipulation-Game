@@ -5,7 +5,7 @@ Using the shortest number of manipulations convert 1 byte to another - made usin
   - **Level 1** 
     - Allow the user to logical shift a binary number
   - **Level 2** 
-    - Allow the user to arithmetical shift a binary number
+    - Allow the user to arithmetic shift a binary number
   - **Level 3**
     - Show the effect the shifting has by showing the denary values before and after the shifts. 
     - Allow the user to bit mask the binary using AND OR  
