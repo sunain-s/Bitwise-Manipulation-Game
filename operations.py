@@ -152,9 +152,8 @@ def or_mask(binary, mask):
 
 def binary_generator():
     byte = ''
-    for bit in range(1, 9):
+    for bit in range(8):
         byte += str(randint(0, 1))
-    print(byte)
     return byte
 
 def solve_in_one(target_binary, start_binary):
