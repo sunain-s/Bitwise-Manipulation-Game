@@ -8,16 +8,19 @@ from random import randint
 
 # --------------------------------------------------------------------------------------------------
 # Logical Shifts
-# 2**x, x>0: shifts <==  multiplying
-# 2**x, x<0: shifts ==> dividing
 
-# Arithmetic Shifts
-# multiplying and dividing but for Two's Complement 
-# retains leading 1s when shifting a negative binary number
+'''
+2**x, x>0: shifts <==  multiplying
+2**x, x<0: shifts ==> dividing
 
-# Masking
-# AND - used to turn off bits: input(10011010) + mask(11100110) = output(10000010)
-# OR - used to turn on bits: input(10011010) + mask(11100110) = output(1111110)
+Arithmetic Shifts
+multiplying and dividing but for Two's Complement 
+retains leading 1s when shifting a negative binary number
+
+Masking
+AND - used to turn off bits: input(10011010) + mask(11100110) = output(10000010)
+OR - used to turn on bits: input(10011010) + mask(11100110) = output(1111110)
+'''
 
 # --------------------------------------------------------------------------------------------------
 # Utility Functions
@@ -49,9 +52,14 @@ def one_packing(binary, length):
     return binary[::-1] # returns binary
 
 def packing_check(binary):
-    if binary[0] == '1':
+    '''
+    Checks if a binary string needs to be packed with 1s or 0s 
+    Two's Complement is used at all times
+    '''
+
+    if binary[0] == '1': # checks sign bit
         binary = one_packing(binary, 8)
-    if binary[0] == '0':
+    if binary[0] == '0': # checks sign bit
         binary = zero_packing(binary, 8)
     return binary
 
@@ -59,33 +67,53 @@ def packing_check(binary):
 # Shifting
 
 def logical_shift_mul(binary ,shift_num):
-    binary = packing_check(binary)
-    binary = bin(int(binary, 2) << shift_num)
-    binary = zero_packing(binary[2:], 8)
-    return binary[abs(len(binary) - 8):]
+    '''
+    Performs logical shift multiplication (left lshift) on binary strings
+        e.g. logical_shift_mul(10111000, 2) ==> 11100000 
+    '''
+
+    binary = packing_check(binary) # makes binary into appropriate byte form
+    binary = bin(int(binary, 2) << shift_num) # performs left lshift
+    binary = zero_packing(binary[2:], 8) # slices '0b' from string and packs with zeros
+    return binary[abs(len(binary) - 8):] # slices to keep in byte form
 
 def logical_shift_div(binary ,shift_num):
-    binary = packing_check(binary)
-    binary = bin(int(binary, 2) >> shift_num)
-    binary = zero_packing(binary[2:], 8)
-    return binary[abs(len(binary) - 8):]
+    '''
+    Performs logical shift division (right lshift) on binary strings
+        e.g. logical_shift_div(10111000, 2) ==> 00101110 
+    '''
+    
+    binary = packing_check(binary) # makes binary into appropriate byte form
+    binary = bin(int(binary, 2) >> shift_num) # performs right lshift
+    binary = zero_packing(binary[2:], 8) # slices '0b' from string and packs with zeros
+    return binary[abs(len(binary) - 8):] # slices to keep in byte form
 
 def arithmetic_shift_mul(binary, shift_num):
-    binary = packing_check(binary)
-    sign = binary[0]
-    binary = bin(int(binary, 2) << shift_num)
-    binary = zero_packing(binary[2:], 8)
-    binary = binary[abs(len(binary) - 8):]
-    binary = sign + binary[1:]
+    '''
+    Performs arithmetic shift multiplication (left ashift) on binary strings
+        e.g. arithmetic_shift_mul(10111000, 1) ==> 11110000
+    '''
+
+    binary = packing_check(binary) # makes binary into appropriate byte form
+    sign = binary[0] # saves sign bit
+    binary = bin(int(binary, 2) << shift_num) # performs left ashift
+    binary = zero_packing(binary[2:], 8) # slices '0b' from string and packs with zeros
+    binary = binary[abs(len(binary) - 8):] # slices to keep in byte form
+    binary = sign + binary[1:] # replaces sign bit with original sign bit
     return binary
 
 def arithmetic_shift_div(binary, shift_num):
-    binary = packing_check(binary)
-    sign = binary[0]
-    binary = bin(int(binary, 2) >> shift_num)
-    binary = zero_packing(binary[2:], 8)
-    binary = binary[abs(len(binary) - 8):]
-    binary = sign + binary[1:]
+    '''
+    Performs arithmetic shift division (right ashift) on binary strings
+        e.g. arithmetic_shift_div(10111000, 1) ==> 11011100
+    '''
+
+    binary = packing_check(binary) # makes binary into appropriate byte form
+    sign = binary[0] # saves sign bit
+    binary = bin(int(binary, 2) >> shift_num) # performs right ashift
+    binary = zero_packing(binary[2:], 8) # slices '0b' from string and packs with zeros
+    binary = binary[abs(len(binary) - 8):] # slices to keep in byte form
+    binary = sign + binary[1:] # replaces sign bit with original sign bit
     return binary 
     
 def byte_to_denary(binary):
@@ -142,4 +170,17 @@ def solve_in_one(target_binary, start_binary):
     
     if arithmetic_shift_div(start_binary, 1) == target_binary:
         solve_code = 4
+    
+    if and_mask(start_binary, target_binary) == target_binary:
+        solve_code = 5
+    
+    if or_mask(start_binary, target_binary) == target_binary:
+        solve_code = 6
+
     return solve_code
+
+def solve_in_two(target_binary, start_binary):
+    and_mask_str = '00000000'
+    binary = and_mask(start_binary, and_mask_str)
+    binary = or_mask(binary, target_binary)
+    return binary, and_mask_str, target_binary
