@@ -133,14 +133,30 @@ def byte_to_denary(binary):
     return denary
 
 def and_mask(binary, mask):
-    binary = packing_check(binary)
-    mask = zero_packing(mask, 8)
+    '''
+    AND Masks 2 8 bit binary strings together
+
+    Truth Table:
+
+    0   |   0   |   0
+    0   |   1   |   0
+    1   |   0   |   0
+    1   |   1   |   1
+        
+    e.g.
+             11011010
+        AND  10111001
+    output:  10011000
+    '''
+
+    binary = packing_check(binary) # makes binary into appropriate byte form
+    mask = zero_packing(mask, 8) # makes mask into byte form
     masked_binary = ''
     for bit in range(len(binary)):
-        if binary[bit] == '1' and mask[bit] == '1':
+        if binary[bit] == '1' and mask[bit] == '1': # if '1' and '1' in corresponding bits there is a '1'
             masked_binary += '1'
         else:
-            masked_binary += '0'
+            masked_binary += '0' # otherwise '0'
     return masked_binary
 
 def or_mask(binary, mask):
