@@ -117,14 +117,18 @@ def arithmetic_shift_div(binary, shift_num):
     return binary 
     
 def byte_to_denary(binary):
+    '''
+    Converts Two's Complement binary to denary, via addition method
+    '''
+
     denary = 0
-    if binary[0] == '1':
+    if binary[0] == '1': # checks if 7th bit is '1', if so -128
         denary += -128
-    binary = binary[1:]
+    binary = binary[1:] # removes 7th bit to prevent from interfering with calculation
     power = 0
-    for bit in binary[::-1]:
+    for bit in binary[::-1]: #iterates through reversed binary string
         if bit == '1':
-            denary += 2 ** power
+            denary += 2 ** power # adds increasing powers of 2 whenever a '1' is found
         power += 1
     return denary
 
