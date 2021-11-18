@@ -197,23 +197,27 @@ def binary_generator():
     return byte
 
 def solve_in_one(target_binary, start_binary):
-    solve_code = 0
-    if logical_shift_mul(start_binary, 1) == target_binary:
+    '''
+    Checks if target binary can be reached in 1 step, returns identifier code
+    '''
+
+    solve_code = 0 # default identifier code
+    if logical_shift_mul(start_binary, 1) == target_binary: # checks if logical shift <== works
         solve_code = 1
 
-    if logical_shift_div(start_binary, 1) == target_binary:
+    if logical_shift_div(start_binary, 1) == target_binary: # checks if logical shift ==> works
         solve_code = 2
 
-    if arithmetic_shift_mul(start_binary, 1) == target_binary:
+    if arithmetic_shift_mul(start_binary, 1) == target_binary: # checks if arithmetic shift <== works
         solve_code = 3
     
-    if arithmetic_shift_div(start_binary, 1) == target_binary:
+    if arithmetic_shift_div(start_binary, 1) == target_binary: # checks if arithmetic shift ==> works
         solve_code = 4
     
-    if and_mask(start_binary, target_binary) == target_binary:
+    if and_mask(start_binary, target_binary) == target_binary: # checks if can be solved with an AND mask
         solve_code = 5
     
-    if or_mask(start_binary, target_binary) == target_binary:
+    if or_mask(start_binary, target_binary) == target_binary: # checks if can be solved with an OR mask
         solve_code = 6
 
     return solve_code
