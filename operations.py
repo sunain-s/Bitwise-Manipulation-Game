@@ -223,7 +223,13 @@ def solve_in_one(target_binary, start_binary):
     return solve_code
 
 def solve_in_two(target_binary, start_binary):
+    '''
+    Solves all start to target possibilities:
+        AND masking with '00000000' 
+        OR masking with target binary
+    '''
+
     and_mask_str = '00000000'
-    binary = and_mask(start_binary, and_mask_str)
-    binary = or_mask(binary, target_binary)
-    return binary, and_mask_str, target_binary
+    binary = and_mask(start_binary, and_mask_str) # masks and turns binary to '00000000'
+    binary = or_mask(binary, target_binary) # masks and creates target binary
+    return and_mask_str, target_binary
