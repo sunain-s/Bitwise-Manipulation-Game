@@ -187,9 +187,13 @@ def or_mask(binary, mask):
     return masked_binary
 
 def binary_generator():
+    '''
+    Creates a random 8 bit binary string
+    '''
+
     byte = ''
     for bit in range(8):
-        byte += str(randint(0, 1))
+        byte += str(randint(0, 1)) # concatenates random bit
     return byte
 
 def solve_in_one(target_binary, start_binary):
