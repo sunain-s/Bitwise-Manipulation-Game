@@ -7,7 +7,7 @@ import random
 from random import randint
 
 # --------------------------------------------------------------------------------------------------
-# Logical Shifts
+# Logic Rules
 
 '''
 2**x, x>0: shifts <==  multiplying
@@ -64,6 +64,35 @@ def packing_check(binary):
     return binary
 
 # --------------------------------------------------------------------------------------------------
+# Binary Stuff
+
+def byte_to_denary(binary):
+    '''
+    Converts Two's Complement binary to denary, via addition method
+    '''
+
+    denary = 0
+    if binary[0] == '1': # checks if 7th bit is '1', if so -128
+        denary += -128
+    binary = binary[1:] # removes 7th bit to prevent from interfering with calculation
+    power = 0
+    for bit in binary[::-1]: #iterates through reversed binary string
+        if bit == '1':
+            denary += 2 ** power # adds increasing powers of 2 whenever a '1' is found
+        power += 1
+    return denary
+
+def binary_generator():
+    '''
+    Creates a random 8 bit binary string
+    '''
+
+    byte = ''
+    for bit in range(8):
+        byte += str(randint(0, 1)) # concatenates random bit
+    return byte
+
+# --------------------------------------------------------------------------------------------------
 # Shifting
 
 def logical_shift_mul(binary ,shift_num):
@@ -115,22 +144,9 @@ def arithmetic_shift_div(binary, shift_num):
     binary = binary[abs(len(binary) - 8):] # slices to keep in byte form
     binary = sign + binary[1:] # replaces sign bit with original sign bit
     return binary 
-    
-def byte_to_denary(binary):
-    '''
-    Converts Two's Complement binary to denary, via addition method
-    '''
 
-    denary = 0
-    if binary[0] == '1': # checks if 7th bit is '1', if so -128
-        denary += -128
-    binary = binary[1:] # removes 7th bit to prevent from interfering with calculation
-    power = 0
-    for bit in binary[::-1]: #iterates through reversed binary string
-        if bit == '1':
-            denary += 2 ** power # adds increasing powers of 2 whenever a '1' is found
-        power += 1
-    return denary
+# --------------------------------------------------------------------------------------------------
+# Masking
 
 def and_mask(binary, mask):
     '''
@@ -186,15 +202,8 @@ def or_mask(binary, mask):
             masked_binary += '0' # otherwise '0'
     return masked_binary
 
-def binary_generator():
-    '''
-    Creates a random 8 bit binary string
-    '''
-
-    byte = ''
-    for bit in range(8):
-        byte += str(randint(0, 1)) # concatenates random bit
-    return byte
+# --------------------------------------------------------------------------------------------------
+# Step Solving
 
 def solve_in_one(target_binary, start_binary):
     '''
@@ -233,3 +242,7 @@ def solve_in_two(target_binary, start_binary):
     binary = and_mask(start_binary, and_mask_str) # masks and turns binary to '00000000'
     binary = or_mask(binary, target_binary) # masks and creates target binary
     return and_mask_str, target_binary
+
+# --------------------------------------------------------------------------------------------------
+# Test Site
+
