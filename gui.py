@@ -17,3 +17,9 @@ def draw_text(text, font, color, surface, x, y):
     text_rect = text_obj.get_rect()
     text_rect.center = (x, y)
     surface.blit(text_obj, text_rect)
+
+def input_valid(inp):
+    for chr in inp:
+        if chr != '1' and chr != '0':
+            return False 
+    return True
