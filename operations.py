@@ -117,20 +117,6 @@ def logical_shift_div(binary ,shift_num):
     binary = zero_packing(binary[2:], 8) # slices '0b' from string and packs with zeros
     return binary[abs(len(binary) - 8):] # slices to keep in byte form
 
-def arithmetic_shift_mul(binary, shift_num):
-    '''
-    Performs arithmetic shift multiplication (left ashift) on binary strings
-        e.g. arithmetic_shift_mul(10111000, 1) ==> 11110000
-    '''
-
-    binary = packing_check(binary) # makes binary into appropriate byte form
-    sign = binary[0] # saves sign bit
-    binary = bin(int(binary, 2) << shift_num) # performs left ashift
-    binary = zero_packing(binary[2:], 8) # slices '0b' from string and packs with zeros
-    binary = binary[abs(len(binary) - 8):] # slices to keep in byte form
-    binary = sign + binary[1:] # replaces sign bit with original sign bit
-    return binary
-
 def arithmetic_shift_div(binary, shift_num):
     '''
     Performs arithmetic shift division (right ashift) on binary strings
@@ -165,8 +151,8 @@ def and_mask(binary, mask):
     output:  10011000
     '''
 
-    binary = packing_check(binary) # makes binary into appropriate byte form
-    mask = zero_packing(mask, 8) # makes mask into byte form
+    binary = packing_check(binary)[1:] # makes binary into appropriate byte form
+    mask = zero_packing(mask, 8)[1:] # makes mask into byte form
     masked_binary = ''
     for bit in range(len(binary)):
         if binary[bit] == '1' and mask[bit] == '1': # if '1' and '1' in corresponding bits there is a '1'
@@ -192,8 +178,8 @@ def or_mask(binary, mask):
     output:  11111011
     '''
 
-    binary = packing_check(binary) # makes binary into appropriate byte form
-    mask = zero_packing(mask, 8) # makes mask into byte form
+    binary = packing_check(binary)[1:] # makes binary into appropriate byte form
+    mask = zero_packing(mask, 8)[1:] # makes mask into byte form
     masked_binary = ''
     for bit in range(len(binary)):
         if binary[bit] == '1' or mask[bit] == '1': # if '1' in either corresponding bit there is a '1'
@@ -245,4 +231,3 @@ def solve_in_two(target_binary, start_binary):
 
 # --------------------------------------------------------------------------------------------------
 # Test Site
-
