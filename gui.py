@@ -28,3 +28,9 @@ def draw_rect_transparent(surface, colour, rect):
     shape_surf = pygame.Surface(pygame.Rect(rect).size, pygame.SRCALPHA)
     pygame.draw.rect(shape_surf, colour, shape_surf.get_rect())
     surface.blit(shape_surf, rect)
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Main Function
+
+def run():
+    pass
