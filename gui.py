@@ -55,7 +55,24 @@ def run():
     input_str = ''
     current_binary = ''
     target_binary = ''
+    
+    click = False
+    while True:
+        
+        click = False
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: 
+                pygame.quit()
+                sys.exit()
 
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True 
+                    
+        CLOCK.tick(30)
+        pygame.display.update()
+        SCREEN.blit(bg_image, (0, 0))
+        
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Constants
 
