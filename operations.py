@@ -150,15 +150,17 @@ def and_mask(binary, mask):
     output:  10011000
     '''
 
-    binary = packing_check(binary)[1:] # makes binary into appropriate byte form
-    mask = zero_packing(mask, 8)[1:] # makes mask into byte form
+    binary = packing_check(binary) # makes binary into appropriate byte form
+    mask = zero_packing(mask, 8) # makes mask into byte form
+    print(binary)
+    print(mask)
     masked_binary = ''
     for bit in range(len(binary)):
         if binary[bit] == '1' and mask[bit] == '1': # if '1' and '1' in corresponding bits there is a '1'
             masked_binary += '1'
         else:
             masked_binary += '0' # otherwise '0'
-    return masked_binary
+    return zero_packing(masked_binary, 8)
 
 def or_mask(binary, mask):
     '''
@@ -177,15 +179,18 @@ def or_mask(binary, mask):
     output:  11111011
     '''
 
-    binary = packing_check(binary)[1:] # makes binary into appropriate byte form
-    mask = zero_packing(mask, 8)[1:] # makes mask into byte form
+    binary = packing_check(binary) # makes binary into appropriate byte form
+    mask = zero_packing(mask, 8) # makes mask into byte form
+    print(binary)
+    print(mask)
     masked_binary = ''
     for bit in range(len(binary)):
         if binary[bit] == '1' or mask[bit] == '1': # if '1' in either corresponding bit there is a '1'
             masked_binary += '1'
         else:
             masked_binary += '0' # otherwise '0'
-    return masked_binary
+        print(masked_binary)
+    return zero_packing(masked_binary, 8)
 
 # --------------------------------------------------------------------------------------------------
 # Step Solving
