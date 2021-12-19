@@ -59,6 +59,36 @@ def run():
     click = False
     while True:
         
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), a_shift_button)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), l_shift_button)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), or_mask_button)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), and_mask_button)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), denary_output_box)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), mask_input_box)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), solution_output_box)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), steps_output_box)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), target_bin_box)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), current_bin_box)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), help_button_box)
+        draw_rect_transparent(SCREEN, (0, 0, 0, 0), generate_button)
+
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[0])
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[1])
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[2])
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[3])
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[4])
+
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[0])
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[1])
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[2])
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[3])
+        draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[4])
+
+        mx , my = pygame.mouse.get_pos()
+        draw_text(input_str, font, (0, 0, 0), SCREEN, mask_input_box.centerx, mask_input_box.centery)
+        draw_text(target_binary, font, (0, 0, 0), SCREEN, target_bin_box.centerx, target_bin_box.centery)
+        draw_text(current_binary, font, (0, 0, 0), SCREEN, current_bin_box.centerx, current_bin_box.centery)
+        
         click = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
