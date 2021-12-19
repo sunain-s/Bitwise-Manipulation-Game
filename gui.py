@@ -36,6 +36,18 @@ def run():
     pass
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Constants
+
+pygame.init()
+CLOCK = pygame.time.Clock()
+SCREEN_WIDTH = 1413
+SCREEN_HEIGHT = 796
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption('Bitwise Manipulation Game | Sunain Syed')
+bg_image = pygame.image.load('bg_image.png')
+font = pygame.font.Font('agency-fb-bold.ttf', 60)
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Runs Program
 
 if __name__ == '__main__':
