@@ -30,6 +30,26 @@ def draw_rect_transparent(surface, colour, rect):
     surface.blit(shape_surf, rect)
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Help Screen Function
+
+def help_screen():
+
+    while True:
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: 
+                pygame.quit()
+                sys.exit()
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    main()
+
+        CLOCK.tick(30)
+        pygame.display.update()
+        SCREEN.fill((20, 90, 115))
+    
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Main Function
 
 def run():
@@ -111,7 +131,7 @@ CLOCK = pygame.time.Clock()
 SCREEN_WIDTH = 1413
 SCREEN_HEIGHT = 796
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption('Bitwise Manipulation Game | Sunain Syed')
+pygame.display.set_caption('Bitwise Manipulation Game | Asianguy_123')
 bg_image = pygame.image.load('bg_image.png')
 font = pygame.font.Font('agency-fb-bold.ttf', 60)
 
