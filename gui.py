@@ -168,7 +168,36 @@ def run():
             for message in messages:
                 draw_text(message, help_text_font, (0, 0, 0), SCREEN, solution_output_box.centerx, solution_output_box.top + x)
                 x += 40                
-              
+        
+        if game_active:
+
+            if a_shift_button.collidepoint(mx, my):
+                if click:
+                    a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = True, False, False, False, False
+
+            if l_shift_button.collidepoint(mx, my):
+                if click:
+                    a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, True, False, False, False
+            
+            if or_mask_button.collidepoint(mx, my):
+                if click:
+                    a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, True, False, False
+
+            if and_mask_button.collidepoint(mx, my):
+                if click:
+                    a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, True, False
+
+            if a_shift_selected or l_shift_selected:
+
+                for box in left_triangle_boxes:
+                    if box.collidepoint(mx, my):
+                        if click:
+                            animate_left = True
+                            
+                for box in right_triangle_boxes:
+                    if box.collidepoint(mx, my):
+                        if click:
+                            animate_right = True
         
         click = False
         for event in pygame.event.get():
