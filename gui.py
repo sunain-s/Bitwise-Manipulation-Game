@@ -29,6 +29,24 @@ def draw_rect_transparent(surface, colour, rect):
     pygame.draw.rect(shape_surf, colour, shape_surf.get_rect())
     surface.blit(shape_surf, rect)
 
+def animation_left(shift_string, box):
+    time.sleep(.2)
+    if len(shift_string) < 9:
+        draw_text(shift_string, help_text_font, (0, 0, 0), SCREEN, box.centerx, box.centery + 40)
+        shift_string += '<'
+    else:
+        shift_string = ''
+    return shift_string
+
+def animation_right(shift_string, box):
+    time.sleep(0.2)
+    if len(shift_string) < 9:
+        draw_text(shift_string, help_text_font, (0, 0, 0), SCREEN, box.centerx, box.centery + 40)
+        shift_string += '>'
+    else:
+        shift_string = ''
+    return shift_string    
+    
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Help Screen Function
 
