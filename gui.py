@@ -198,6 +198,24 @@ def run():
                     if box.collidepoint(mx, my):
                         if click:
                             animate_right = True
+                            
+            if animate_left:
+                shift_string = animation_left(shift_string, current_bin_box)
+                if len(shift_string) > 8:
+                    current_binary = logical_shift_mul(current_binary, 1)
+                    steps += 1
+                    animate_left = False
+            
+            if animate_right:
+                shift_string = animation_right(shift_string, current_bin_box)
+                if len(shift_string) > 8:
+                    if l_shift_selected:
+                        current_binary = logical_shift_div(current_binary, 1)
+                    elif a_shift_selected:
+                        current_binary = arithmetic_shift_div(current_binary, 1)
+                    steps += 1
+                    animate_right = False
+        
         
         click = False
         for event in pygame.event.get():
