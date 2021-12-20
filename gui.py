@@ -225,7 +225,11 @@ def run():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    click = True 
+                    click = True   
+
+                if pygame.MOUSEBUTTONDOWN and mask_input_box.collidepoint(mx, my):
+                    mask_input_selected = True
+                    input_str = ''
                     
         CLOCK.tick(30)
         pygame.display.update()
