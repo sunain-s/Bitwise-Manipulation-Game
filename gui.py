@@ -148,7 +148,27 @@ def run():
         if help_button_box.collidepoint(mx, my):
             if click:
                 a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, False, False
-                help_screen()            
+                help_screen()
+                
+        if solved:
+            
+            game_active = False
+            a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, False, False
+            solution_messages = [
+                ['Logical left shift', f'{start_binary} ==> {target_binary}'],
+                ['Logical right shift', f'{start_binary} ==> {target_binary}'],
+                ['Arithmetic right shift', f'{start_binary} ==> {target_binary}'],
+                [f'AND mask with {target_binary}', f'{start_binary} ==> {target_binary}'],
+                [f'OR mask with {target_binary}', f'{start_binary} ==> {target_binary}'],
+                ['AND mask with 00000000', f'{start_binary} ==> 00000000', f'OR mask with {target_binary}', f'00000000 ==> {target_binary}']
+            ]
+
+            x = 40
+            messages = solution_messages[solve_in_one(target_binary, start_binary)]
+            for message in messages:
+                draw_text(message, help_text_font, (0, 0, 0), SCREEN, solution_output_box.centerx, solution_output_box.top + x)
+                x += 40                
+              
         
         click = False
         for event in pygame.event.get():
