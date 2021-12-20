@@ -4,6 +4,7 @@
 import sys
 import pygame
 from operations import *
+import time
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Utility Functions
@@ -16,7 +17,7 @@ def draw_text(text, font, color, surface, x, y):
     text_obj = font.render(text, 1, color)
     text_rect = text_obj.get_rect()
     text_rect.center = (x, y)
-    surface.blit(text_obj, text_rect)
+    surface.blit(text_obj, text_rect)    
 
 def input_valid(inp):
     for chr in inp:
@@ -45,8 +46,8 @@ def animation_right(shift_string, box):
         shift_string += '>'
     else:
         shift_string = ''
-    return shift_string    
-    
+    return shift_string
+
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Help Screen Function
 
@@ -79,11 +80,11 @@ def help_screen():
         CLOCK.tick(30)
         pygame.display.update()
         SCREEN.fill((20, 90, 115))
-    
+
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Main Function
 
-def run():
+def main():
     
     a_shift_button = pygame.Rect(767, 37, 224, 43)
     l_shift_button = pygame.Rect(767, 88, 224, 43)
@@ -109,10 +110,10 @@ def run():
     steps = 0
     denary = ''
     shift_string = ''
+
     click = False
-    
     while True:
-        
+
         draw_rect_transparent(SCREEN, (0, 0, 0, 0), a_shift_button)
         draw_rect_transparent(SCREEN, (0, 0, 0, 0), l_shift_button)
         draw_rect_transparent(SCREEN, (0, 0, 0, 0), or_mask_button)
@@ -144,7 +145,7 @@ def run():
         draw_text(current_binary, font, (0, 0, 0), SCREEN, current_bin_box.centerx, current_bin_box.centery)
         draw_text(str(steps), help_title_font, (0, 0, 0), SCREEN, steps_output_box.centerx, steps_output_box.centery)
         draw_text(denary, font, (0, 0, 0), SCREEN, denary_output_box.centerx, denary_output_box.centery)
-        
+
         denary = str(byte_to_denary(current_binary))
 
         if current_binary == target_binary and len(current_binary) > 0:
@@ -167,7 +168,7 @@ def run():
             if click:
                 a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, False, False
                 help_screen()
-                
+
         if solved:
             
             game_active = False
@@ -185,8 +186,9 @@ def run():
             messages = solution_messages[solve_in_one(target_binary, start_binary)]
             for message in messages:
                 draw_text(message, help_text_font, (0, 0, 0), SCREEN, solution_output_box.centerx, solution_output_box.top + x)
-                x += 40                
-        
+                x += 40
+
+
         if game_active:
 
             if a_shift_button.collidepoint(mx, my):
@@ -216,7 +218,7 @@ def run():
                     if box.collidepoint(mx, my):
                         if click:
                             animate_right = True
-                            
+
             if animate_left:
                 shift_string = animation_left(shift_string, current_bin_box)
                 if len(shift_string) > 8:
@@ -233,8 +235,8 @@ def run():
                         current_binary = arithmetic_shift_div(current_binary, 1)
                     steps += 1
                     animate_right = False
-        
-        
+
+
         click = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
@@ -248,7 +250,7 @@ def run():
                 if pygame.MOUSEBUTTONDOWN and mask_input_box.collidepoint(mx, my):
                     mask_input_selected = True
                     input_str = ''
-                    
+            
             if or_mask_selected or and_mask_selected:
                 if mask_input_selected:
                     if event.type == pygame.KEYDOWN:
@@ -267,11 +269,13 @@ def run():
                             
                         else:
                             input_str += event.unicode
-                    
+
         CLOCK.tick(30)
         pygame.display.update()
         SCREEN.blit(bg_image, (0, 0))
-        
+
+
+
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Constants
 
@@ -283,9 +287,12 @@ SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Bitwise Manipulation Game | Asianguy_123')
 bg_image = pygame.image.load('bg_image.png')
 font = pygame.font.Font('agency-fb-bold.ttf', 60)
+help_title_font = pygame.font.Font('agency-fb-bold.ttf', 80)
+help_text_font = pygame.font.Font('agency-fb-bold.ttf', 40)
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Runs Program
 
 if __name__ == '__main__':
-    run()
+    main()
+    
