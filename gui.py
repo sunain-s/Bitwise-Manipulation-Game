@@ -35,7 +35,20 @@ def draw_rect_transparent(surface, colour, rect):
 def help_screen():
 
     while True:
+
+        draw_text('Bitwise Manipulation Game', help_title_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 50)
+        draw_text('Change your current binary into the target binary with as few steps as possible', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 140)
+        draw_text('You can use logical shift, arithmetic shift, AND masking or OR masking to reach the target', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 190)
+        draw_text('To start the game, click the generate button and your binaries will appear', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 270)
+        draw_text('To perform a mask, select the type of mask and click the input box next to it and type the mask in', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 320)
+        draw_text('and hit enter to submit it', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 370)
+        draw_text('To perform a shift, select the mode then use the right and left arrows to shift', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 450)
+        draw_text('Switch between logical and arithmetic shift by reselecting the mode', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 500)
+        draw_text('Once you reach the target binary, the quickest solution will be shown', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 580)
+        draw_text('To play again click the generate button and receive new binaries', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 630)
+        draw_text('Press ESC to return to the game', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 730)
         
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
                 pygame.quit()
