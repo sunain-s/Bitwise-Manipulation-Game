@@ -132,6 +132,23 @@ def run():
         if current_binary == target_binary and len(current_binary) > 0:
             solved = True
             game_active = False
+
+        if generate_button.collidepoint(mx, my):
+            if click:
+                input_str = ''
+                current_binary = binary_generator()
+                target_binary = binary_generator()
+                if current_binary == target_binary:
+                    current_binary = binary_generator()
+                start_binary = current_binary
+                game_active = True
+                solved = False
+                steps = 0
+
+        if help_button_box.collidepoint(mx, my):
+            if click:
+                a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, False, False
+                help_screen()            
         
         click = False
         for event in pygame.event.get():
