@@ -74,7 +74,7 @@ def run():
     generate_button = pygame.Rect(277, 701, 230, 56)
     help_button_box = pygame.Rect(137, 697, 66, 66)
     mask_input_box = pygame.Rect(897, 165, 354, 107)
-    a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, help_selected, mask_input_selected, game_active = False, False, False, False, False, False, False
+    a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected, game_active, solved, animate_left, animate_right = False, False, False, False, False, False, False, False, False
 
     denary_output_box = pygame.Rect(1096, 59, 153, 78)
     solution_output_box = pygame.Rect(767, 403, 428, 207)
@@ -88,6 +88,9 @@ def run():
     input_str = ''
     current_binary = ''
     target_binary = ''
+    steps = 0
+    denary = ''
+    shift_string = ''
     
     click = False
     while True:
