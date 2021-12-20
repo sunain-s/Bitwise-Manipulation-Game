@@ -70,15 +70,18 @@ def byte_to_denary(binary):
     Converts Two's Complement binary to denary, via addition method
     '''
 
-    denary = 0
-    if binary[0] == '1': # checks if 7th bit is '1', if so -128
-        denary += -128
-    binary = binary[1:] # removes 7th bit to prevent from interfering with calculation
-    power = 0
-    for bit in binary[::-1]: #iterates through reversed binary string
-        if bit == '1':
-            denary += 2 ** power # adds increasing powers of 2 whenever a '1' is found
-        power += 1
+    if len(binary) > 0:
+        denary = 0
+        if binary[0] == '1': # checks if 7th bit is '1', if so -128
+            denary += -128
+        binary = binary[1:] # removes 7th bit to prevent from interfering with calculation
+        power = 0
+        for bit in binary[::-1]: #iterates through reversed binary string
+            if bit == '1':
+                denary += 2 ** power # adds increasing powers of 2 whenever a '1' is found
+            power += 1
+    else:
+        denary = ''
     return denary
 
 def binary_generator():
@@ -195,38 +198,23 @@ def solve_in_one(target_binary, start_binary):
     Checks if target binary can be reached in 1 step, returns identifier code
     '''
 
-    solve_code = 0 # default identifier code
+    solve_code = 5 # default identifier code
     if logical_shift_mul(start_binary, 1) == target_binary: # checks if logical shift <== works
-        solve_code = 1
+        solve_code = 0
 
     if logical_shift_div(start_binary, 1) == target_binary: # checks if logical shift ==> works
-        solve_code = 2
-
-    if arithmetic_shift_mul(start_binary, 1) == target_binary: # checks if arithmetic shift <== works
-        solve_code = 3
+        solve_code = 1
     
     if arithmetic_shift_div(start_binary, 1) == target_binary: # checks if arithmetic shift ==> works
-        solve_code = 4
+        solve_code = 2
     
     if and_mask(start_binary, target_binary) == target_binary: # checks if can be solved with an AND mask
-        solve_code = 5
+        solve_code = 3
     
     if or_mask(start_binary, target_binary) == target_binary: # checks if can be solved with an OR mask
-        solve_code = 6
+        solve_code = 4
 
     return solve_code
-
-def solve_in_two(target_binary, start_binary):
-    '''
-    Solves all start to target possibilities:
-        AND masking with '00000000' 
-        OR masking with target binary
-    '''
-
-    and_mask_str = '00000000'
-    binary = and_mask(start_binary, and_mask_str) # masks and turns binary to '00000000'
-    binary = or_mask(binary, target_binary) # masks and creates target binary
-    return and_mask_str, target_binary
 
 # --------------------------------------------------------------------------------------------------
 # Test Site
