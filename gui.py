@@ -91,8 +91,8 @@ def run():
     steps = 0
     denary = ''
     shift_string = ''
-    
     click = False
+    
     while True:
         
         draw_rect_transparent(SCREEN, (0, 0, 0, 0), a_shift_button)
@@ -124,6 +124,14 @@ def run():
         draw_text(input_str, font, (0, 0, 0), SCREEN, mask_input_box.centerx, mask_input_box.centery)
         draw_text(target_binary, font, (0, 0, 0), SCREEN, target_bin_box.centerx, target_bin_box.centery)
         draw_text(current_binary, font, (0, 0, 0), SCREEN, current_bin_box.centerx, current_bin_box.centery)
+        draw_text(str(steps), help_title_font, (0, 0, 0), SCREEN, steps_output_box.centerx, steps_output_box.centery)
+        draw_text(denary, font, (0, 0, 0), SCREEN, denary_output_box.centerx, denary_output_box.centery)
+        
+        denary = str(byte_to_denary(current_binary))
+
+        if current_binary == target_binary and len(current_binary) > 0:
+            solved = True
+            game_active = False
         
         click = False
         for event in pygame.event.get():
