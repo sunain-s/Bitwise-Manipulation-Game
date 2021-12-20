@@ -249,6 +249,25 @@ def run():
                     mask_input_selected = True
                     input_str = ''
                     
+            if or_mask_selected or and_mask_selected:
+                if mask_input_selected:
+                    if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_BACKSPACE:
+                            input_str = input_str[:-1]
+                        elif event.key == pygame.K_RETURN:
+                            mask_input_selected = False
+                            valid_input = input_valid(input_str)
+                            if valid_input:
+                                if or_mask_selected:
+                                    current_binary = or_mask(current_binary, input_str)
+                                elif and_mask_selected:
+                                    current_binary = and_mask(current_binary, input_str)
+                                steps += 1
+                            input_str = ''
+                            
+                        else:
+                            input_str += event.unicode
+                    
         CLOCK.tick(30)
         pygame.display.update()
         SCREEN.blit(bg_image, (0, 0))
