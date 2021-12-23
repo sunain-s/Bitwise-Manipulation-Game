@@ -39,10 +39,14 @@ def draw_rect_transparent(surface, colour, rect):
     surface.blit(shape_surf, rect) 
 
 def animation_left(shift_string, box):
+    '''
+    Animation for left shifts
+    '''
+
     time.sleep(.2)
     if len(shift_string) < 9:
-        draw_text(shift_string, help_text_font, (0, 0, 0), SCREEN, box.centerx, box.centery + 40)
-        shift_string += '<'
+        draw_text(shift_string, help_text_font, (0, 0, 0), SCREEN, box.centerx, box.centery + 40) # outputs animated string
+        shift_string += '<' # extends string if string animation not complete
     else:
         shift_string = ''
     return shift_string
