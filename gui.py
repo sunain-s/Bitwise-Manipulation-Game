@@ -20,8 +20,12 @@ def draw_text(text, font, color, surface, x, y):
     surface.blit(text_obj, text_rect)    
 
 def input_valid(inp):
+    '''
+    Checks if mask input is valid - only contains 1s or 0s
+    '''
+
     for chr in inp:
-        if chr != '1' and chr != '0':
+        if chr != '1' and chr != '0': 
             return False 
     return True
 
