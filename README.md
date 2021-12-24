@@ -21,7 +21,7 @@ Using the shortest number of manipulations convert 1 byte to another - made usin
 # How to run and use
 Download zip file and extract, then run 'gui.py' (python must be installed to user path or global path)
 
-For instructions on how to play the game click on the help icon in the bottom left to read the user instruction set
+For instructions on how to play the game click on the help icon in the bottom left of the window to read the user instruction set
 
 # What I learnt
 - Using images to create a more efficient gui
@@ -30,6 +30,11 @@ For instructions on how to play the game click on the help icon in the bottom le
 - Creating a help window
 - How to make an incredibly simple problem self solving program
 - Bitwise operation implementation
+- Basic animation with pygame
 
 # Improvements
-Coming soon!
+- Would look at making a help window using the same background image
+  - makes it more appealing
+  - makes it more consistent
+  - makes it more efficient, as only need to output a single complex image rather than calling a draw function multiple times for simpler outputs
+- Potentially make a more complex animation that looks good, currently most animation possibilities aren't attractive
