@@ -68,9 +68,13 @@ def animation_right(shift_string, box):
 # Help Screen Function
 
 def help_screen():
+    '''
+    Help GUI for user instructions and explanation
+    '''
 
     while True:
 
+        # drawing all messages
         draw_text('Bitwise Manipulation Game', help_title_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 50)
         draw_text('Change your current binary into the target binary with as few steps as possible', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 140)
         draw_text('You can use logical shift, arithmetic shift, AND masking or OR masking to reach the target', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 190)
@@ -83,12 +87,13 @@ def help_screen():
         draw_text('To play again click the generate button and receive new binaries', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 630)
         draw_text('Press ESC to return to the game', help_text_font, (255, 255, 255), SCREEN, SCREEN_WIDTH/2, 730)
         
-
+        # event loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
                 pygame.quit()
                 sys.exit()
 
+            # escape to main window
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     main()
