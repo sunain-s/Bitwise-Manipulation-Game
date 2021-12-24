@@ -24,7 +24,12 @@ Download zip file and extract, then run 'gui.py' (python must be installed to us
 For instructions on how to play the game click on the help icon in the bottom left to read the user instruction set
 
 # What I learnt
-Coming soon!
+- Using images to create a more efficient gui
+- Creating invisible rectangles in pygame
+- Using control booleans effectively for inputs and mode selection
+- Creating a help window
+- How to make an incredibly simple problem self solving program
+- Bitwise operation implementation
 
 # Improvements
 Coming soon!
