@@ -16,11 +16,12 @@ Using the shortest number of manipulations convert 1 byte to another - made usin
     - Make it graphical 
   - **Level 6**
     - The program works out the shortest number of steps to change between the two numbers and shows the answer.
-  - **Level 7**
     - The program shows an animation of the bits moving. 
 
 # How to run and use
-Coming soon!
+Download zip file and extract, then run 'gui.py' (python must be installed to user path or global path)
+
+For instructions on how to play the game click on the help icon in the bottom left to read the user instruction set
 
 # What I learnt
 Coming soon!
