@@ -206,10 +206,13 @@ def main():
                 a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, False, False
                 help_screen()
                 
+        # if game over
         if solved:
             
             game_active = False
             a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, False, False
+
+            # possible optimal solution messages
             solution_messages = [
                 ['Logical left shift', f'{start_binary} ==> {target_binary}'],
                 ['Logical right shift', f'{start_binary} ==> {target_binary}'],
@@ -219,6 +222,7 @@ def main():
                 ['AND mask with 00000000', f'{start_binary} ==> 00000000', f'OR mask with {target_binary}', f'00000000 ==> {target_binary}']
             ]
 
+            # outputs appropriate message
             x = 40
             messages = solution_messages[solve_in_one(target_binary, start_binary)]
             for message in messages:
