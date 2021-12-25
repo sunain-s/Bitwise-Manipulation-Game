@@ -144,6 +144,7 @@ def main():
     click = False
     while True:
 
+        # drawing invisible output and hitboxes
         draw_rect_transparent(SCREEN, (0, 0, 0, 0), a_shift_button)
         draw_rect_transparent(SCREEN, (0, 0, 0, 0), l_shift_button)
         draw_rect_transparent(SCREEN, (0, 0, 0, 0), or_mask_button)
@@ -157,12 +158,14 @@ def main():
         draw_rect_transparent(SCREEN, (0, 0, 0, 0), help_button_box)
         draw_rect_transparent(SCREEN, (0, 0, 0, 0), generate_button)
 
+        # drawing left shift invisble hitboxes
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[0])
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[1])
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[2])
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[3])
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), left_triangle_boxes[4])
 
+        # drawing right shift invisible hitboxes
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[0])
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[1])
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[2])
