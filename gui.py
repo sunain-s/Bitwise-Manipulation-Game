@@ -172,36 +172,40 @@ def main():
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[3])
         draw_rect_transparent(SCREEN, (255, 255, 255, 0), right_triangle_boxes[4])
 
-        mx , my = pygame.mouse.get_pos()
+        mx, my = pygame.mouse.get_pos() # gets mouse position
+
+        # outputing strings and digits
         draw_text(input_str, font, (0, 0, 0), SCREEN, mask_input_box.centerx, mask_input_box.centery)
         draw_text(target_binary, font, (0, 0, 0), SCREEN, target_bin_box.centerx, target_bin_box.centery)
         draw_text(current_binary, font, (0, 0, 0), SCREEN, current_bin_box.centerx, current_bin_box.centery)
         draw_text(str(steps), help_title_font, (0, 0, 0), SCREEN, steps_output_box.centerx, steps_output_box.centery)
         draw_text(denary, font, (0, 0, 0), SCREEN, denary_output_box.centerx, denary_output_box.centery)
-
         denary = str(byte_to_denary(current_binary))
 
+        # end game condition
         if current_binary == target_binary and len(current_binary) > 0:
             solved = True
             game_active = False
 
+        # generate selected, begin game
         if generate_button.collidepoint(mx, my):
             if click:
                 input_str = ''
                 current_binary = binary_generator()
                 target_binary = binary_generator()
-                if current_binary == target_binary:
+                if current_binary == target_binary: # recreates current binary if already equal to
                     current_binary = binary_generator()
                 start_binary = current_binary
                 game_active = True
                 solved = False
                 steps = 0
 
+        # if help selected, open help gui
         if help_button_box.collidepoint(mx, my):
             if click:
                 a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, False, False
                 help_screen()
-
+                
         if solved:
             
             game_active = False
