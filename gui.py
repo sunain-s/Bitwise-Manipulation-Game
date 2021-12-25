@@ -106,7 +106,11 @@ def help_screen():
 # Main Function
 
 def main():
+    '''
+    Main GUI function
+    '''
     
+    # button hitboxes
     a_shift_button = pygame.Rect(767, 37, 224, 43)
     l_shift_button = pygame.Rect(767, 88, 224, 43)
     or_mask_button = pygame.Rect(706, 161, 168, 53)
@@ -114,17 +118,22 @@ def main():
     generate_button = pygame.Rect(277, 701, 230, 56)
     help_button_box = pygame.Rect(137, 697, 66, 66)
     mask_input_box = pygame.Rect(897, 165, 354, 107)
+
+    # booleans
     a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected, game_active, solved, animate_left, animate_right = False, False, False, False, False, False, False, False, False
 
+    # output boxes
     denary_output_box = pygame.Rect(1096, 59, 153, 78)
     solution_output_box = pygame.Rect(767, 403, 428, 207)
     steps_output_box = pygame.Rect(1032, 630, 163, 135)
     target_bin_box = pygame.Rect(258, 267, 300, 50)
     current_bin_box = pygame.Rect(258, 425, 300, 50)
 
+    # arrow boxes
     left_triangle_boxes = [pygame.Rect(748, 36, 10, 96), pygame.Rect(738, 46, 10, 77), pygame.Rect(728, 54, 10, 59), pygame.Rect(718, 63, 10, 43), pygame.Rect(705, 77, 13, 15)]
     right_triangle_boxes = [pygame.Rect(1001, 36, 10, 96), pygame.Rect(1011, 46, 10, 77), pygame.Rect(1021, 54, 10, 59), pygame.Rect(1031, 63, 10, 43), pygame.Rect(1041, 77, 13, 15)]
 
+    # output strings/digits
     input_str = ''
     current_binary = ''
     target_binary = ''
