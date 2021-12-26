@@ -229,9 +229,10 @@ def main():
                 draw_text(message, help_text_font, (0, 0, 0), SCREEN, solution_output_box.centerx, solution_output_box.top + x)
                 x += 40
 
-
+        # if game ongoing
         if game_active:
 
+            # setting booleans for box clicks
             if a_shift_button.collidepoint(mx, my):
                 if click:
                     a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = True, False, False, False, False
