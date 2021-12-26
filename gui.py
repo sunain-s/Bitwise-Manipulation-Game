@@ -249,8 +249,9 @@ def main():
                 if click:
                     a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, True, False
 
+            # checking left or right shift clicks
             if a_shift_selected or l_shift_selected:
-
+                
                 for box in left_triangle_boxes:
                     if box.collidepoint(mx, my):
                         if click:
