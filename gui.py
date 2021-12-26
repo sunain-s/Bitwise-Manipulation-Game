@@ -262,6 +262,7 @@ def main():
                         if click:
                             animate_right = True
 
+            # animating for left shift, and shifting binary
             if animate_left:
                 shift_string = animation_left(shift_string, current_bin_box)
                 if len(shift_string) > 8:
