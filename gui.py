@@ -282,16 +282,19 @@ def main():
                     animate_right = False
 
 
+        # event loop
         click = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
                 pygame.quit()
                 sys.exit()
-
+            
+            # click input check
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True   
 
+                # check if input box selected
                 if pygame.MOUSEBUTTONDOWN and mask_input_box.collidepoint(mx, my):
                     mask_input_selected = True
                     input_str = ''
