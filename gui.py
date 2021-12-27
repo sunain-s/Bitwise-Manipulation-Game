@@ -270,6 +270,7 @@ def main():
                     steps += 1
                     animate_left = False
             
+            # animating for right shift, and shifting binary
             if animate_right:
                 shift_string = animation_right(shift_string, current_bin_box)
                 if len(shift_string) > 8:
