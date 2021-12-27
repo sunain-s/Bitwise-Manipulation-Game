@@ -205,7 +205,7 @@ def main():
             if click:
                 a_shift_selected, l_shift_selected, or_mask_selected, and_mask_selected, mask_input_selected = False, False, False, False, False
                 help_screen()
-                
+
         # if game over
         if solved:
             
@@ -251,7 +251,7 @@ def main():
 
             # checking left or right shift clicks
             if a_shift_selected or l_shift_selected:
-                
+
                 for box in left_triangle_boxes:
                     if box.collidepoint(mx, my):
                         if click:
@@ -280,7 +280,6 @@ def main():
                         current_binary = arithmetic_shift_div(current_binary, 1)
                     steps += 1
                     animate_right = False
-
 
         # event loop
         click = False
@@ -314,15 +313,13 @@ def main():
                                 elif and_mask_selected:
                                     current_binary = and_mask(current_binary, input_str)
                                 steps += 1
-                            input_str = '' # resets mask input                     
+                            input_str = '' # resets mask input                            
                         else:
                             input_str += event.unicode # adds input to string
 
         CLOCK.tick(30)
         pygame.display.update()
-        SCREEN.blit(bg_image, (0, 0))
-
-
+        SCREEN.blit(bg_image, (0, 0)) # display background image
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Constants
@@ -332,7 +329,7 @@ CLOCK = pygame.time.Clock()
 SCREEN_WIDTH = 1413
 SCREEN_HEIGHT = 796
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption('Bitwise Manipulation Game | Asianguy_123')
+pygame.display.set_caption('Bitwise Manipulation Game | Sunain Syed')
 bg_image = pygame.image.load('bg_image.png')
 font = pygame.font.Font('agency-fb-bold.ttf', 60)
 help_title_font = pygame.font.Font('agency-fb-bold.ttf', 80)
@@ -343,4 +340,3 @@ help_text_font = pygame.font.Font('agency-fb-bold.ttf', 40)
 
 if __name__ == '__main__':
     main()
-    
