@@ -299,24 +299,24 @@ def main():
                     mask_input_selected = True
                     input_str = ''
             
+            # mask input
             if or_mask_selected or and_mask_selected:
                 if mask_input_selected:
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_BACKSPACE:
-                            input_str = input_str[:-1]
-                        elif event.key == pygame.K_RETURN:
-                            mask_input_selected = False
-                            valid_input = input_valid(input_str)
-                            if valid_input:
+                            input_str = input_str[:-1] # deleting
+                        elif event.key == pygame.K_RETURN: # submitting mask input
+                            mask_input_selected = False 
+                            valid_input = input_valid(input_str) # input validity check
+                            if valid_input: # performs mask
                                 if or_mask_selected:
-                                    current_binary = or_mask(current_binary, input_str)
+                                    current_binary = or_mask(current_binary, input_str) 
                                 elif and_mask_selected:
                                     current_binary = and_mask(current_binary, input_str)
                                 steps += 1
-                            input_str = ''
-                            
+                            input_str = '' # resets mask input                     
                         else:
-                            input_str += event.unicode
+                            input_str += event.unicode # adds input to string
 
         CLOCK.tick(30)
         pygame.display.update()
